@@ -1,4 +1,4 @@
-#!/home/vboxuser/recsys/mari/recsys-course-spring-2026/jupyter/jupyter_venv/bin/python3
+#!/home/vboxuser/recsys/mari/recsys-course-spring-2026/jupyter/jupyter_venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
