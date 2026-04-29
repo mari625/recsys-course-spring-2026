@@ -80,12 +80,15 @@ sasrec_i2i_recommender = I2IRecommender(
 catalog.upload_recommendations(
     recommendations_hw_redis.connection,
     "RECOMMENDATIONS_HW_FILE_PATH",
+    key_object="item_id",
+    key_recommendations="recommendations",
 )
 
 hw_recommender = HWRecommender(
+    listen_history_redis.connection,
     recommendations_hw_redis.connection,
-    catalog,
-    random_recommender)
+    random_recommender,
+)
 
 parser = reqparse.RequestParser()
 parser.add_argument("track", type=int, location="json", required=True)
@@ -131,6 +134,7 @@ class NextTrack(Resource):
             recommender = sasrec_i2i_recommender
         else:
             recommender = hw_recommender
+
 
         recommendation = recommender.recommend_next(user, args.track, args.time)
 
