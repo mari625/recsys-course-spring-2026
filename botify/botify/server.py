@@ -132,8 +132,10 @@ class NextTrack(Resource):
 
         if treatment == Treatment.C:
             recommender = sasrec_i2i_recommender
-        else:
+        elif treatment == Treatment.T1:
             recommender = hw_recommender
+        else:
+            recommender = random_recommender
 
 
         recommendation = recommender.recommend_next(user, args.track, args.time)
