@@ -6,4 +6,5 @@ class Random(Recommender):
         self.track_redis = track_redis
 
     def recommend_next(self, user: int, prev_track: int, prev_track_time: float) -> int:
+        print(int(self.track_redis.randomkey()))
         return int(self.track_redis.randomkey())

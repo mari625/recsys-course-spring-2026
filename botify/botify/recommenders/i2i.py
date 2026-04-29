@@ -28,6 +28,7 @@ class I2IRecommender(Recommender):
                 anchor = random.choices(anchors, weights=weights, k=1)[0]
                 candidate = self._recommend_from_anchor(anchor, seen_tracks)
                 if candidate is not None:
+                    print(candidate)
                     return candidate
 
                 anchor_idx = anchors.index(anchor)
