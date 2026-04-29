@@ -28,13 +28,13 @@ class I2IRecommender(Recommender):
                 anchor = random.choices(anchors, weights=weights, k=1)[0]
                 candidate = self._recommend_from_anchor(anchor, seen_tracks)
                 if candidate is not None:
-                    print(candidate)
                     return candidate
 
                 anchor_idx = anchors.index(anchor)
                 anchors.pop(anchor_idx)
                 weights.pop(anchor_idx)
 
+        
         return self.fallback_recommender.recommend_next(user, prev_track, prev_track_time)
 
     def _load_user_history(self, user: int):
