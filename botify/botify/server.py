@@ -15,7 +15,7 @@ from botify.experiment import Experiments, Treatment
 from botify.recommenders.i2i import I2IRecommender
 from botify.recommenders.random import Random
 from botify.recommenders.indexed import Indexed
-from botify.recommenders.hw_recommender import HWRecommender
+#from botify.recommenders.hw_recommender import HWRecommender
 from botify.recommenders.sticky_artist import StickyArtist
 from botify.track import Catalog
 
@@ -84,7 +84,7 @@ catalog.upload_recommendations(
     key_recommendations="recommendations",
 )
 
-hw_recommender = HWRecommender(
+hw_recommender = I2IRecommender(
     listen_history_redis.connection,
     recommendations_hw_redis.connection,
     random_recommender,
