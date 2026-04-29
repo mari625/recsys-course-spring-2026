@@ -29,7 +29,7 @@
   "REDIS_RECOMMENDATIONS_HW_HOST": "redis",
   "REDIS_RECOMMENDATIONS_HW_PORT": 6379,
   "REDIS_RECOMMENDATIONS_HW_DB": 6,
-  "RECOMMENDATIONS_HW_FILE_PATH": "./data/hw_recommendations.json",
+  "RECOMMENDATIONS_HW_FILE_PATH": "./data/hw_recommendations.jsonl",
 
   "TRACKS_CATALOG": "./data/tracks.json",
   "DATA_LOG_FILE": "./log/data.json",
