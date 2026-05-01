@@ -4,6 +4,7 @@ __pycache__
 .ipynb_checkpoints
 botify/log/*
 botify/data/*.json
+!data/hstu_recommendations.json
 !botify/data/tracks.json
 .DS_Store
 
