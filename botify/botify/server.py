@@ -34,7 +34,7 @@ recommendations_contextual_redis = Redis(app, config_prefix="REDIS_RECOMMENDATIO
 
 recommendations_hstu_redis = Redis(app, config_prefix="REDIS_RECOMMENDATIONS_HSTU")
 
-recommendations_hw_redis = Redis(app, config_prefix="REDIS_RECOMMENDATIONS_HW")
+recommendations_hw_ens_redis = Redis(app, config_prefix="REDIS_RECOMMENDATIONS_HW_ENS")
 
 data_logger = DataLogger(app)
 atexit.register(data_logger.close)
@@ -78,15 +78,15 @@ sasrec_i2i_recommender = I2IRecommender(
 )
 
 catalog.upload_recommendations(
-    recommendations_hw_redis.connection,
-    "RECOMMENDATIONS_HW_FILE_PATH",
+    recommendations_hw_ens_redis.connection,
+    "RECOMMENDATIONS_HW_ENS_FILE_PATH",
     key_object="item_id",
     key_recommendations="recommendations",
 )
 
-hw_recommender = I2IRecommender(
+hw_ens_recommender = I2IRecommender(
     listen_history_redis.connection,
-    recommendations_hw_redis.connection,
+    recommendations_hw_ens_redis.connection,
     random_recommender,
 )
 
@@ -128,12 +128,12 @@ class NextTrack(Resource):
         args = parser.parse_args()
         persist_user_listen_history(user, args.track, args.time)
 
-        treatment = Experiments.HW.assign(user)
+        treatment = Experiments.HW_ENS.assign(user)
 
         if treatment == Treatment.C:
             recommender = sasrec_i2i_recommender
         elif treatment == Treatment.T1:
-            recommender = hw_recommender
+            recommender = hw_ens_recommender
         else:
             recommender = random_recommender
 

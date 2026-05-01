@@ -67,7 +67,7 @@ class Experiments:
     I2I = Experiment("I2I", Split.THREE_WAY)
     HSTU = Experiment("HSTU", Split.HALF_HALF)
 
-    HW = Experiment("HW", Split.HALF_HALF)
+    HW_ENS = Experiment("HW_ENS", Split.HALF_HALF)
 
     def __init__(self):
-        self.experiments = [Experiments.HW]
+        self.experiments = [Experiments.HW_ENS]
